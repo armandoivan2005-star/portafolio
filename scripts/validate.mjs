@@ -38,6 +38,7 @@ const requiredFragments = [
   'href="https://divisas.novasoftsl.com"',
   'href="https://drive.google.com/drive/folders/1azojpdZdnN3o206k-4JZj6JJXH4ramaa?usp=drive_link"',
   'href="https://github.com/armandoivan2005-star"',
+  'href="https://github.com/armandoivan2005-star/portafolio"',
   'juan@lasc.com',
   '12345678',
   'Los datos se actualizan a diario.',
@@ -104,7 +105,7 @@ if (!css.includes(":root") || !css.includes(".project-grid")) {
   throw new Error("La hoja de estilos externa no contiene las reglas principales.");
 }
 
-if (!notFound.includes("<title>404 | Armando Castillo</title>") || !notFound.includes('href="/"') || !notFound.includes('href="assets/css/styles.css"')) {
+if (!notFound.includes("<title>404 | Armando Castillo</title>") || !notFound.includes('href="/"') || !notFound.includes('href="/assets/css/styles.css"')) {
   throw new Error("La página 404 personalizada no contiene su título, regreso al inicio o estilos externos.");
 }
 

@@ -24,6 +24,7 @@ Enlaces públicos conectados:
 - `https://pliegoluz.novasoftsl.com`
 - `https://divisas.novasoftsl.com`
 - `https://github.com/armandoivan2005-star`
+- `https://github.com/armandoivan2005-star/portafolio`
 
 ## Actualizar el CV
 
