@@ -35,6 +35,13 @@ const requiredFragments = [
   'href="https://fiscalix.novasoftsl.com"',
   'href="https://matego.novasoftsl.com"',
   'href="https://pliegoluz.novasoftsl.com"',
+  'data-project-monitor',
+  'data-monitor-url="https://fiscalix.novasoftsl.com"',
+  'data-monitor-url="https://pliegoluz.novasoftsl.com"',
+  'data-monitor-url="https://matego.novasoftsl.com"',
+  'data-monitor-url="https://divisas.novasoftsl.com"',
+  "label: 'Alerta de supervisión'",
+  "window.setInterval(() => checkProjectAvailability(element), interval)",
   'href="https://divisas.novasoftsl.com"',
   'href="https://drive.google.com/drive/folders/1azojpdZdnN3o206k-4JZj6JJXH4ramaa?usp=drive_link"',
   'href="https://github.com/armandoivan2005-star"',
@@ -81,6 +88,11 @@ if (projectCount !== 4) {
   throw new Error(`Se esperaban 4 proyectos visibles y se encontraron ${projectCount}.`);
 }
 
+const monitoredProjectCount = (html.match(/data-monitor-url="https:\/\/[^"]+"/g) || []).length;
+if (monitoredProjectCount !== projectCount) {
+  throw new Error(`Cada proyecto debe incluir un verificador automático; se encontraron ${monitoredProjectCount} de ${projectCount}.`);
+}
+
 if (cv.subarray(0, 5).toString() !== "%PDF-") {
   throw new Error("dist/assets/documents/CV.pdf no parece ser un PDF válido.");
 }
@@ -103,6 +115,10 @@ if (!sitemap.includes("<loc>https://portafolio.novasoftsl.com/</loc>")) {
 
 if (!css.includes(":root") || !css.includes(".project-grid")) {
   throw new Error("La hoja de estilos externa no contiene las reglas principales.");
+}
+
+if (!css.includes(".project-status--alert")) {
+  throw new Error("La hoja de estilos no contiene el estado de alerta del verificador automático.");
 }
 
 if (!notFound.includes("<title>404 | Armando Castillo</title>") || !notFound.includes('href="/"') || !notFound.includes('href="/assets/css/styles.css"')) {
